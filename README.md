@@ -1,3 +1,10 @@
+# 🏦 Enterprise Credit Risk Scorecard Modeling System
+
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![ML](https://img.shields.io/badge/Machine-Learning-green)
+![Banking](https://img.shields.io/badge/Domain-Credit_Risk-orange)
+![Status](https://img.shields.io/badge/Project-Completed-brightgreen)
+
 # 🏦 Enterprise Credit Risk Analytics & Scorecard Modeling System
 
 An end-to-end enterprise-style Credit Risk Modeling project built using the Home Credit Default Risk dataset.  
