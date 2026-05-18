@@ -1,13 +1,12 @@
 # 🏦 Enterprise Credit Risk Scorecard Modeling System
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
-![ML](https://img.shields.io/badge/Machine-Learning-green)
-![Banking](https://img.shields.io/badge/Domain-Credit_Risk-orange)
-![Status](https://img.shields.io/badge/Project-Completed-brightgreen)
+![Machine Learning](https://img.shields.io/badge/Machine-Learning-green)
+![Banking Analytics](https://img.shields.io/badge/Domain-Credit_Risk-orange)
+![Project Status](https://img.shields.io/badge/Project-Completed-brightgreen)
 
-# 🏦 Enterprise Credit Risk Analytics & Scorecard Modeling System
+An end-to-end enterprise-style Credit Risk Analytics project built using the Home Credit Default Risk dataset.
 
-An end-to-end enterprise-style Credit Risk Modeling project built using the Home Credit Default Risk dataset.  
 This project demonstrates real-world banking analytics workflows including:
 
 - Credit Risk Modeling
@@ -26,20 +25,69 @@ This project demonstrates real-world banking analytics workflows including:
 Financial institutions need to assess whether a customer is likely to default on a loan.
 
 This project builds a complete scorecard-based credit risk system that:
-- predicts probability of default
-- generates customer credit scores
-- segments customers into risk bands
-- monitors model stability over time
+
+✅ predicts probability of default  
+✅ generates customer credit scores  
+✅ segments customers into risk bands  
+✅ monitors model stability over time  
 
 ---
 
-# 🧠 Project Objectives
+# 📈 Final Model Performance
 
-- Build an interpretable banking-style scorecard model
-- Compare traditional scorecards vs modern ML models
-- Generate business-friendly customer risk scores
-- Implement enterprise monitoring metrics like PSI
-- Simulate production drift monitoring
+| Metric | Value |
+|---|---|
+| Logistic Regression AUC | 0.7412 |
+| KS Statistic | 0.3618 |
+| XGBoost AUC | 0.7390 |
+
+---
+
+# 📊 Risk Band Default Rates
+
+| Risk Band | Default Rate |
+|---|---|
+| High Risk | 10.0% |
+| Medium Risk | 2.2% |
+| Low Risk | 0.0% |
+
+---
+
+# 🔄 End-to-End Workflow
+
+```text
+Data Collection
+        ↓
+Data Cleaning
+        ↓
+Feature Engineering
+        ↓
+WOE & IV Analysis
+        ↓
+Logistic Regression
+        ↓
+Scorecard Generation
+        ↓
+Risk Segmentation
+        ↓
+PSI Monitoring
+        ↓
+Drift Analysis
+```
+
+---
+
+# 🏦 Banking Concepts Implemented
+
+- Weight of Evidence (WOE)
+- Information Value (IV)
+- Scorecard Scaling
+- Logistic Regression Scorecards
+- KS Statistic
+- Population Stability Index (PSI)
+- Risk Band Segmentation
+- Drift Monitoring
+- Credit Risk Analytics
 
 ---
 
@@ -48,19 +96,20 @@ This project builds a complete scorecard-based credit risk system that:
 Dataset Used:
 - Home Credit Default Risk Dataset
 
-Source:
+Dataset Source:
 - Kaggle Competition Dataset
 
 The dataset contains:
-- demographic information
+- customer demographic information
 - income details
-- loan information
+- credit history
 - employment history
-- behavioral credit features
+- loan information
+- behavioral credit variables
 
-Target Variable:
+### Target Variable
 - `TARGET = 1` → Customer Default
-- `TARGET = 0` → Non-default
+- `TARGET = 0` → Non-default Customer
 
 ---
 
@@ -71,9 +120,9 @@ Target Variable:
 | Programming | Python |
 | Data Processing | Pandas, NumPy |
 | Visualization | Matplotlib, Seaborn |
-| ML Models | Logistic Regression, XGBoost |
+| Machine Learning | Logistic Regression, XGBoost |
 | Scorecard Modeling | ScorecardPy |
-| Monitoring | PSI, Drift Analysis |
+| Monitoring | PSI, Drift Monitoring |
 | Environment | Google Colab |
 
 ---
@@ -81,9 +130,7 @@ Target Variable:
 # 📂 Project Structure
 
 ```text
-credit-risk-analytics-system/
-│
-├── data/
+credit-risk-scorecard-model/
 │
 ├── notebooks/
 │   ├── 01_data_understanding.ipynb
@@ -95,7 +142,9 @@ credit-risk-analytics-system/
 │
 ├── outputs/
 │   ├── customer_credit_scores.csv
-│   ├── model_monitoring_report.csv
+│   └── model_monitoring_report.csv
+│
+├── screenshots/
 │
 ├── README.md
 └── requirements.txt
@@ -103,40 +152,22 @@ credit-risk-analytics-system/
 
 ---
 
-# 🔄 End-to-End Workflow
+# 🧠 Feature Engineering
 
-## 1️⃣ Data Understanding
-- Dataset exploration
-- Missing value analysis
-- Target imbalance analysis
-- Correlation analysis
-
----
-
-## 2️⃣ Data Cleaning & Feature Engineering
-
-### Missing Value Treatment
-- threshold-based removal
-- median imputation
-- categorical missing handling
-
-### Feature Engineering
-Created business-driven features such as:
+Created business-driven financial features including:
 
 - Credit Income Ratio
 - Annuity Income Ratio
 - Employment Stability
 - Credit Term
 
+These features improved model interpretability and risk segmentation.
+
 ---
 
-## 3️⃣ WOE & IV Analysis
+# 🔍 WOE & IV Analysis
 
-Implemented:
-- monotonic binning
-- Weight of Evidence (WOE)
-- Information Value (IV)
-- scorecard-ready transformation
+Implemented monotonic binning using Weight of Evidence transformation.
 
 ### WOE Formula
 
@@ -150,6 +181,15 @@ WOE = \ln\left(\frac{\%Good}{\%Bad}\right)
 IV = \sum (\%Good - \%Bad) \times WOE
 \]
 
+### IV Interpretation
+
+| IV | Predictive Strength |
+|---|---|
+| <0.02 | Weak |
+| 0.02–0.1 | Medium |
+| 0.1–0.3 | Strong |
+| >0.3 | Very Strong |
+
 ---
 
 # 🤖 Model Development
@@ -158,28 +198,22 @@ IV = \sum (\%Good - \%Bad) \times WOE
 Traditional interpretable banking scorecard model.
 
 ## XGBoost
-Modern machine learning benchmark model.
+Modern machine learning benchmark model used for comparison.
 
 ---
 
-# 📈 Model Performance
+# 📈 Model Evaluation
 
-| Model | AUC |
-|---|---|
-| Logistic Regression | 0.7412 |
-| XGBoost | 0.7390 |
+### ROC-AUC
+Measures model discrimination capability.
 
 ### KS Statistic
-- KS = 0.3618
+Measures separation between good and bad customer distributions.
 
----
-
-# 📊 Key Insights
-
+### Key Insights
 - Logistic Regression slightly outperformed XGBoost
-- WOE transformation improved model interpretability
+- WOE transformation improved interpretability
 - Scorecard achieved strong risk separation
-- Higher scores corresponded to lower default rates
 
 ---
 
@@ -187,22 +221,42 @@ Modern machine learning benchmark model.
 
 Converted probability of default into business-friendly credit scores.
 
-### Risk Segmentation
-
-| Risk Band | Default Rate |
-|---|---|
-| High Risk | 10.0% |
-| Medium Risk | 2.2% |
-| Low Risk | 0.0% |
+### Scorecard Benefits
+- easy customer risk ranking
+- interpretable business scoring
+- lending decision support
 
 ---
 
-# 📉 Score Distribution
+# 📷 Project Visualizations
 
-The generated score distribution showed:
-- stable bell-shaped behavior
-- effective customer risk separation
-- realistic portfolio distribution
+## ROC Curve
+
+![ROC Curve](screenshots/roc_curve.png)
+
+---
+
+## WOE Binning
+
+![WOE Plot](screenshots/woe_binning.png)
+
+---
+
+## Score Distribution
+
+![Score Distribution](screenshots/score_distribution.png)
+
+---
+
+## Risk Band Analysis
+
+![Risk Band Analysis](screenshots/risk_band_analysis.png)
+
+---
+
+## PSI Monitoring
+
+![PSI Monitoring](screenshots/psi_monitoring.png)
 
 ---
 
@@ -234,22 +288,24 @@ PSI = \sum (Actual\% - Expected\%) \times \ln\left(\frac{Actual\%}{Expected\%}\r
 # 📌 Business Impact
 
 This system can help banks:
-- reduce credit losses
-- improve loan approval decisions
-- monitor portfolio quality
-- detect model drift
-- prioritize low-risk customers
+
+✅ reduce credit losses  
+✅ improve loan approval decisions  
+✅ monitor portfolio quality  
+✅ detect model drift  
+✅ identify high-risk customers  
+✅ prioritize low-risk borrowers  
 
 ---
 
 # 🚀 Future Improvements
 
-- Streamlit deployment
-- SHAP explainability
-- Hyperparameter tuning
-- IFRS9 probability of default modeling
-- Real-time monitoring dashboard
-- Automated retraining pipeline
+- Streamlit Deployment
+- SHAP Explainability
+- MLflow Tracking
+- Real-time Monitoring Dashboard
+- Automated Retraining Pipeline
+- IFRS9 Probability of Default Modeling
 
 ---
 
@@ -258,7 +314,7 @@ This system can help banks:
 ## Install Dependencies
 
 ```bash
-pip install pandas numpy matplotlib seaborn scikit-learn xgboost scorecardpy
+pip install pandas numpy matplotlib seaborn scikit-learn xgboost scorecardpy joblib
 ```
 
 ---
@@ -274,30 +330,21 @@ pip install pandas numpy matplotlib seaborn scikit-learn xgboost scorecardpy
 
 ---
 
-# 📷 Sample Outputs
-
-- ROC Curve
-- KS Statistic
-- WOE Binning Plots
-- Credit Score Distribution
-- Risk Band Analysis
-- PSI Monitoring Charts
-
----
-
 # 👨‍💻 Author
 
 ## Suvendu Samanta
 
-Manager | Credit Risk Analytics | Python | PySpark | GenAI Enthusiast
+Senior Analyst | Credit Risk Analytics | Python | PySpark | GenAI Enthusiast
 
 ---
 
 # ⭐ Project Highlights
 
-✅ Enterprise-style scorecard modeling  
-✅ Banking-grade WOE/IV implementation  
-✅ Model monitoring framework  
-✅ PSI drift analysis  
-✅ Credit score generation  
-✅ Business-focused analytics workflow
+✅ Enterprise-style Credit Risk Modeling  
+✅ Banking-grade WOE & IV Analysis  
+✅ Logistic Regression Scorecards  
+✅ KS & AUC Evaluation  
+✅ Credit Score Generation  
+✅ PSI Monitoring & Drift Detection  
+✅ Business-focused Risk Segmentation  
+✅ End-to-End Banking Analytics Workflow
