@@ -1,186 +1,296 @@
-# credit-risk-scorecard-model
-End-to-end Credit Risk Scorecard Modeling using WOE, IV, Logistic Regression, KS, AUC, and Scorecard Scaling in Python.
+# 🏦 Enterprise Credit Risk Analytics & Scorecard Modeling System
 
+An end-to-end enterprise-style Credit Risk Modeling project built using the Home Credit Default Risk dataset.  
+This project demonstrates real-world banking analytics workflows including:
 
-# Credit Risk Scorecard Model
-
-## 📌 Project Overview
-
-This project demonstrates an end-to-end Credit Risk Scorecard Modeling pipeline used in the banking and financial industry to predict customer default risk.
-
-The project includes:
-- Data preprocessing
-- WOE (Weight of Evidence) transformation
-- IV (Information Value) analysis
-- Logistic Regression modeling
-- KS & AUC evaluation
-- Credit score generation
-
-The objective is to classify customers as:
-- Good Customers
-- Bad Customers (likely to default)
+- Credit Risk Modeling
+- WOE & IV Analysis
+- Logistic Regression Scorecards
+- XGBoost Benchmarking
+- KS & AUC Evaluation
+- Credit Score Generation
+- Population Stability Index (PSI)
+- Drift Monitoring Framework
 
 ---
 
-## 📊 Dataset
+# 📌 Business Problem
+
+Financial institutions need to assess whether a customer is likely to default on a loan.
+
+This project builds a complete scorecard-based credit risk system that:
+- predicts probability of default
+- generates customer credit scores
+- segments customers into risk bands
+- monitors model stability over time
+
+---
+
+# 🧠 Project Objectives
+
+- Build an interpretable banking-style scorecard model
+- Compare traditional scorecards vs modern ML models
+- Generate business-friendly customer risk scores
+- Implement enterprise monitoring metrics like PSI
+- Simulate production drift monitoring
+
+---
+
+# 📊 Dataset
 
 Dataset Used:
-- German Credit Risk Dataset
+- Home Credit Default Risk Dataset
 
-The dataset contains customer demographic and financial information such as:
-- Age
-- Credit amount
-- Duration
-- Employment status
-- Housing
-- Savings accounts
-- Checking accounts
+Source:
+- Kaggle Competition Dataset
+
+The dataset contains:
+- demographic information
+- income details
+- loan information
+- employment history
+- behavioral credit features
 
 Target Variable:
-- `1` = Bad Customer
-- `0` = Good Customer
+- `TARGET = 1` → Customer Default
+- `TARGET = 0` → Non-default
 
 ---
 
-## 🛠️ Tech Stack
+# 🛠️ Tech Stack
 
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
-- ScorecardPy
-- Matplotlib
-- Seaborn
+| Category | Tools |
+|---|---|
+| Programming | Python |
+| Data Processing | Pandas, NumPy |
+| Visualization | Matplotlib, Seaborn |
+| ML Models | Logistic Regression, XGBoost |
+| Scorecard Modeling | ScorecardPy |
+| Monitoring | PSI, Drift Analysis |
+| Environment | Google Colab |
 
 ---
 
-## 📂 Project Structure
+# 📂 Project Structure
 
 ```text
-credit-risk-scorecard-model/
+credit-risk-analytics-system/
 │
 ├── data/
-├── notebooks/
-│   ├── 01_data_preprocessing.ipynb
-│   ├── 02_woe_binning.ipynb
-│   ├── 03_model_building.ipynb
-│   └── 04_scorecard_creation.ipynb
 │
-├── src/
+├── notebooks/
+│   ├── 01_data_understanding.ipynb
+│   ├── 02_data_cleaning_feature_engineering.ipynb
+│   ├── 03_woe_iv_analysis.ipynb
+│   ├── 04_model_building_evaluation.ipynb
+│   ├── 05_scorecard_generation.ipynb
+│   └── 06_psi_monitoring.ipynb
+│
+├── outputs/
+│   ├── customer_credit_scores.csv
+│   ├── model_monitoring_report.csv
+│
 ├── README.md
 └── requirements.txt
 ```
 
 ---
 
-## 🔄 Project Workflow
+# 🔄 End-to-End Workflow
 
-### 1. Data Preprocessing
-- Data cleaning
-- Missing value treatment
-- Target variable creation
-- Train-test split
-
-### 2. WOE & IV Analysis
-- Variable binning
-- Weight of Evidence transformation
-- Information Value calculation
-- Feature selection
-
-### 3. Model Building
-- Logistic Regression model training
-- Probability prediction
-
-### 4. Model Evaluation
-Evaluation metrics used:
-- AUC (Area Under Curve)
-- KS Statistic
-- ROC Curve
-
-### 5. Scorecard Generation
-- Score scaling
-- Customer credit score generation
+## 1️⃣ Data Understanding
+- Dataset exploration
+- Missing value analysis
+- Target imbalance analysis
+- Correlation analysis
 
 ---
 
-## 📈 Model Evaluation Metrics
+## 2️⃣ Data Cleaning & Feature Engineering
 
-### AUC
-Measures the model’s ability to distinguish between good and bad customers.
+### Missing Value Treatment
+- threshold-based removal
+- median imputation
+- categorical missing handling
+
+### Feature Engineering
+Created business-driven features such as:
+
+- Credit Income Ratio
+- Annuity Income Ratio
+- Employment Stability
+- Credit Term
+
+---
+
+## 3️⃣ WOE & IV Analysis
+
+Implemented:
+- monotonic binning
+- Weight of Evidence (WOE)
+- Information Value (IV)
+- scorecard-ready transformation
+
+### WOE Formula
+
+\[
+WOE = \ln\left(\frac{\%Good}{\%Bad}\right)
+\]
+
+### IV Formula
+
+\[
+IV = \sum (\%Good - \%Bad) \times WOE
+\]
+
+---
+
+# 🤖 Model Development
+
+## Logistic Regression
+Traditional interpretable banking scorecard model.
+
+## XGBoost
+Modern machine learning benchmark model.
+
+---
+
+# 📈 Model Performance
+
+| Model | AUC |
+|---|---|
+| Logistic Regression | 0.7412 |
+| XGBoost | 0.7390 |
 
 ### KS Statistic
-Measures separation between cumulative good and bad distributions.
+- KS = 0.3618
 
 ---
 
-## 📉 Example Scorecard Workflow
+# 📊 Key Insights
 
-1. Raw customer data  
-2. WOE transformation  
-3. Logistic regression prediction  
-4. Probability of default estimation  
-5. Credit score generation
-
----
-
-## 🚀 Key Learning Outcomes
-
-- Understanding of banking scorecard models
-- WOE and IV implementation
-- Credit risk modeling concepts
-- Logistic regression in risk analytics
-- Model validation using KS and AUC
+- Logistic Regression slightly outperformed XGBoost
+- WOE transformation improved model interpretability
+- Scorecard achieved strong risk separation
+- Higher scores corresponded to lower default rates
 
 ---
 
-## 📌 Future Improvements
+# 💳 Credit Scorecard Generation
+
+Converted probability of default into business-friendly credit scores.
+
+### Risk Segmentation
+
+| Risk Band | Default Rate |
+|---|---|
+| High Risk | 10.0% |
+| Medium Risk | 2.2% |
+| Low Risk | 0.0% |
+
+---
+
+# 📉 Score Distribution
+
+The generated score distribution showed:
+- stable bell-shaped behavior
+- effective customer risk separation
+- realistic portfolio distribution
+
+---
+
+# 🛡️ Model Monitoring & PSI
+
+Implemented enterprise monitoring framework including:
 
 - Population Stability Index (PSI)
-- Model Monitoring Dashboard
-- Streamlit deployment
-- Hyperparameter tuning
-- Reject inference
+- Score Drift Monitoring
+- Feature Drift Analysis
+- Risk Band Stability Tracking
+
+### PSI Formula
+
+\[
+PSI = \sum (Actual\% - Expected\%) \times \ln\left(\frac{Actual\%}{Expected\%}\right)
+\]
+
+### PSI Interpretation
+
+| PSI | Interpretation |
+|---|---|
+| <0.1 | Stable Population |
+| 0.1–0.25 | Moderate Shift |
+| >0.25 | Significant Drift |
 
 ---
 
-## ▶️ How to Run
+# 📌 Business Impact
 
-### Install dependencies
+This system can help banks:
+- reduce credit losses
+- improve loan approval decisions
+- monitor portfolio quality
+- detect model drift
+- prioritize low-risk customers
+
+---
+
+# 🚀 Future Improvements
+
+- Streamlit deployment
+- SHAP explainability
+- Hyperparameter tuning
+- IFRS9 probability of default modeling
+- Real-time monitoring dashboard
+- Automated retraining pipeline
+
+---
+
+# ▶️ How to Run
+
+## Install Dependencies
 
 ```bash
-pip install pandas numpy scikit-learn matplotlib seaborn scorecardpy
+pip install pandas numpy matplotlib seaborn scikit-learn xgboost scorecardpy
 ```
 
-### Run notebooks sequentially
+---
 
-1. `01_data_preprocessing.ipynb`
-2. `02_woe_binning.ipynb`
-3. `03_model_building.ipynb`
-4. `04_scorecard_creation.ipynb`
+## Run Notebooks Sequentially
+
+1. `01_data_understanding.ipynb`
+2. `02_data_cleaning_feature_engineering.ipynb`
+3. `03_woe_iv_analysis.ipynb`
+4. `04_model_building_evaluation.ipynb`
+5. `05_scorecard_generation.ipynb`
+6. `06_psi_monitoring.ipynb`
 
 ---
 
-## 📷 Sample Outputs
+# 📷 Sample Outputs
 
 - ROC Curve
-- KS Plot
-- WOE Binning Tables
+- KS Statistic
+- WOE Binning Plots
 - Credit Score Distribution
+- Risk Band Analysis
+- PSI Monitoring Charts
 
 ---
 
-## 💼 Business Use Case
+# 👨‍💻 Author
 
-Banks and financial institutions use scorecard models to:
-- Approve/reject loans
-- Estimate default probability
-- Monitor portfolio risk
-- Improve lending decisions
+## Suvendu Samanta
+
+Senior Analyst | Credit Risk Analytics | Python | PySpark | GenAI Enthusiast
 
 ---
 
-## 👨‍💻 Author
+# ⭐ Project Highlights
 
-Suvendu Samanta
-
-Manager | Credit Risk Analytics | Python | PySpark | GenAI Enthusiast
+✅ Enterprise-style scorecard modeling  
+✅ Banking-grade WOE/IV implementation  
+✅ Model monitoring framework  
+✅ PSI drift analysis  
+✅ Credit score generation  
+✅ Business-focused analytics workflow
